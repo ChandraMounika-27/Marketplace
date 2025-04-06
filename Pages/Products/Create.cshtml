@@ -1,0 +1,29 @@
+@page
+@model MultiVendorMarketplaceMVC.Pages.Products.CreateModel
+
+@{
+    ViewData["Title"] = "Create Product";
+    // Layout = "~/Pages/Shared/_Layout.cshtml"; // Uncomment if using a layout
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="Product.Name">Product Name</label>
+        <input asp-for="Product.Name" class="form-control" required />
+        <span asp-validation-for="Product.Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Product.Price">Price</label>
+        <input asp-for="Product.Price" class="form-control" type="number" step="0.01" required />
+        <span asp-validation-for="Product.Price" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

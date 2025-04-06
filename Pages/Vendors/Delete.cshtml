@@ -1,0 +1,26 @@
+@page
+@model MultiVendorMarketplaceMVC.Pages.Vendors.DeleteModel
+
+@{
+    // Layout = "~/Pages/Shared/_Layout.cshtml"; // Uncomment if you have a layout file
+    ViewData["Title"] = "Delete Vendor";
+}
+
+<h2 class="mb-4 text-danger">@ViewData["Title"]</h2>
+
+@if (Model.Vendor != null)
+{
+    <p>Are you sure you want to delete the vendor <strong>@Model.Vendor.Name</strong>?</p>
+
+    <form method="post" class="mb-3">
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a href="@Url.Page("Index")" class="btn btn-secondary ms-2">Cancel</a>
+    </form>
+}
+else
+{
+    <div class="alert alert-warning">
+        Vendor not found.
+    </div>
+    <a href="@Url.Page("Index")" class="btn btn-secondary">Back to List</a>
+}

@@ -11,7 +11,7 @@ public class ApplicationDbContext : IdentityDbContext
         : base(options)
     {
     }
-    public DbSet<Vendor> Vendors { get; set; }
-    public DbSet<Product> Products { get; set; }
-    public DbSet<Order> Orders { get; set; }
+    public DbSet<Vendor> Vendors { get; set; }=default!;
+    public DbSet<Product> Products { get; set; }=default!;
+    public DbSet<Order> Orders { get; set; }=default!;
 }

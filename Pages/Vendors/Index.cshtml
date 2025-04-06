@@ -1,0 +1,41 @@
+@page
+@model MultiVendorMarketplaceMVC.Pages.Vendors.IndexModel
+
+@{
+    // Layout = "~/Pages/Shared/_Layout.cshtml"; // Optional: Uncomment if you have a layout
+    ViewData["Title"] = "Vendors List";
+}
+
+<h2 class="mb-4">@ViewData["Title"]</h2>
+
+@if (Model.Vendors != null && Model.Vendors.Any())
+{
+    <table class="table table-striped table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th style="width: 160px;">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var vendor in Model.Vendors)
+        {
+            <tr>
+                <td>@vendor.Name</td>
+                <td>@vendor.Email</td>
+                <td>
+                    <a class="btn btn-sm btn-outline-primary" href="@Url.Page("Edit", new { id = vendor.Id })">Edit</a>
+                    <a class="btn btn-sm btn-outline-danger ms-2" href="@Url.Page("Delete", new { id = vendor.Id })">Delete</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="alert alert-info">No vendors found.</div>
+}
+
+<a class="btn btn-success mt-3" href="@Url.Page("Create")">Create New Vendor</a>

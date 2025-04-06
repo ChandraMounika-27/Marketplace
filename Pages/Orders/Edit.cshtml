@@ -1,0 +1,36 @@
+@page
+@model MultiVendorMarketplaceMVC.Pages.Orders.EditModel
+
+@{
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Edit Order";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="Order.OrderDate">Order Date</label>
+        <input asp-for="Order.OrderDate" type="date" class="form-control"
+               value="@(Model.Order?.OrderDate.ToString("yyyy-MM-dd") ?? "")"
+               required />
+        <span asp-validation-for="Order.OrderDate" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Order.ProductId">Product</label>
+        <select asp-for="Order.ProductId" class="form-control" required>
+            <option value="">Select Product</option>
+            @foreach (var product in Model.Products)
+            {
+                var isSelected = Model.Order != null && product.Id == Model.Order.ProductId;
+                <option value="@product.Id" selected="@(isSelected ? "selected" : null)">
+                    @product.Name
+                </option>
+            }
+        </select>
+        <span asp-validation-for="Order.ProductId" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>

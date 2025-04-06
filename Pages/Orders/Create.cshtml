@@ -1,0 +1,26 @@
+@page
+@model MultiVendorMarketplaceMVC.Pages.Orders.CreateModel
+
+<h2>Create Order</h2>
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="Order.ProductId">Product</label>
+        <select asp-for="Order.ProductId" class="form-control">
+            <option value="">Select a Product</option>
+            @foreach (var product in Model.Products)
+            {
+                <option value="@product.Id">@product.Name - @product.Price</option>
+            }
+        </select>
+        <span asp-validation-for="Order.ProductId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Order.Quantity">Quantity</label>
+        <input asp-for="Order.Quantity" class="form-control" type="number" required />
+        <span asp-validation-for="Order.Quantity" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create Order</button>
+</form>

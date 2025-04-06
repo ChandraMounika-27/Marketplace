@@ -1,0 +1,33 @@
+@page
+@model MultiVendorMarketplaceMVC.Pages.Orders.IndexModel
+@{
+    Layout = "~/Pages/Shared/_Layout.cshtml"; // ✅ Use your shared layout
+    ViewData["Title"] = "Orders List";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Order Date</th>
+            <th>Product</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var order in Model.Orders)
+    {
+        <tr>
+            <td>@order.OrderDate</td>
+            <td>@order.Product.Name</td>
+            <td>
+                <a href="@Url.Page("Edit", new { id = order.Id })">Edit</a> |
+                <a href="@Url.Page("Delete", new { id = order.Id })">Delete</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+<a href="@Url.Page("Create")">Create New Order</a>

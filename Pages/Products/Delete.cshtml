@@ -1,0 +1,26 @@
+@page
+@model MultiVendorMarketplaceMVC.Pages.Products.DeleteModel
+
+@{
+    // Layout = "~/Pages/Shared/_Layout.cshtml"; // Uncomment if you use a shared layout
+    ViewData["Title"] = "Delete Product";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+@if (Model.Product != null)
+{
+    <p>Are you sure you want to delete the product <strong>@Model.Product.Name</strong>?</p>
+
+    <form method="post">
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a class="btn btn-secondary" href="@Url.Page("Index")">Cancel</a>
+    </form>
+}
+else
+{
+    <div class="alert alert-warning">
+        Product not found.
+    </div>
+    <a class="btn btn-primary" href="@Url.Page("Index")">Back to List</a>
+}

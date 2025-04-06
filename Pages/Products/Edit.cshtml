@@ -1,0 +1,36 @@
+@page
+@model MultiVendorMarketplaceMVC.Pages.Products.EditModel
+
+@{
+    // Layout = "~/Pages/Shared/_Layout.cshtml"; // Uncomment this if you're using a shared layout
+    ViewData["Title"] = "Edit Product";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+@if (Model.Product != null)
+{
+    <form method="post">
+        <div class="form-group">
+            <label for="Name">Product Name</label>
+            <input type="text" class="form-control" id="Name" name="Name" 
+                   value="@Model.Product.Name" required />
+        </div>
+
+        <div class="form-group">
+            <label for="Price">Price</label>
+            <input type="number" class="form-control" id="Price" name="Price" 
+                   value="@Model.Product.Price" step="0.01" required />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Save</button>
+        <a class="btn btn-secondary" href="@Url.Page("Index")">Cancel</a>
+    </form>
+}
+else
+{
+    <div class="alert alert-warning">
+        Product not found.
+    </div>
+    <a class="btn btn-primary" href="@Url.Page("Index")">Back to List</a>
+}

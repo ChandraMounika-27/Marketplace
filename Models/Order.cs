@@ -6,9 +6,8 @@ namespace MultiVendorMarketplaceMVC.Models;
 
 public class Order
 {
-    public int Id { get; set; }
-    public DateTime OrderDate { get; set; }
+     public int Id { get; set; }
     public int ProductId { get; set; }
-
-    public Product Product { get; set; }=null!;
+    public Product Product { get; set; }=null!;  // Navigation property
+    public int Quantity { get; set; }
 }
